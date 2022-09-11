@@ -20,9 +20,9 @@ def create_db_engine():
     return engine
 
 def read_songs(genre: str = None, mood: str = None, shown_songs: dict = []):
-    if genre == "skip_genre":
+    if genre == "skip genre":
         genre = None
-    if mood == "skip_mood":
+    if mood == "skip mood":
         mood = None
     if genre is None and mood is None:
         # None of genre/mood selected
