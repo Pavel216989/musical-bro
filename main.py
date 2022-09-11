@@ -40,7 +40,7 @@ def main_menu(update: Update, context: CallbackContext):
     if reply in all_moods or reply == 'more':
         if reply != 'more':
             mood = reply
-            context.chat_data['selected_genre'] = mood
+            context.chat_data['selected_mood'] = mood
         print(reply)
         update.callback_query.answer()
         genre = context.chat_data['selected_genre']
