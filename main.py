@@ -34,17 +34,17 @@ def main_menu(update: Update, context: CallbackContext):
     if reply in all_genres:
         # User selected the genre
         genre = reply
-        context.chat_data['selected_genre'] = genre
+        context.chat_data['selected_genre'] = genre.lower()
         context.bot.send_message(chat_id=update.effective_chat.id, text=first_menu_message(), reply_markup=first_menu_keyboard())
         print(genre)
     if reply in all_moods or reply == 'more':
         if reply != 'more':
             mood = reply
-            context.chat_data['selected_mood'] = mood
+            context.chat_data['selected_mood'] = mood.lower()
         print(reply)
         update.callback_query.answer()
-        genre = context.chat_data['selected_genre']
-        mood = context.chat_data['selected_mood']
+        genre = context.chat_data['selected_genre'].lower()
+        mood = context.chat_data['selected_mood'].lower()
         songs = read_songs(genre=genre, mood=mood, shown_songs=shown_songs)
         n_songs = len(songs)
         print(n_songs, " Songs")
@@ -80,7 +80,7 @@ def error(update, context):
 
 ############################ Keyboards #########################################
 def main_menu_keyboard():
-    keyboard = [[InlineKeyboardButton('Здзіві мяне!', callback_data='Здзіві мяне!')],
+    keyboard = [[InlineKeyboardButton('Здзіві мяне!', callback_data='pдзіві мяне!')],
                 [InlineKeyboardButton('Фолк', callback_data='Фолк')],
                 [InlineKeyboardButton('Поп', callback_data='Поп')],
                 [InlineKeyboardButton('Метал', callback_data='Метал')],
