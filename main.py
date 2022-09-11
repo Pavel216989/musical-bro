@@ -34,13 +34,17 @@ def main_menu(update: Update, context: CallbackContext):
     if reply in all_genres:
         # User selected the genre
         genre = reply
+        context.chat_data['selected_genre'] = genre
         context.bot.send_message(chat_id=update.effective_chat.id, text=first_menu_message(), reply_markup=first_menu_keyboard())
         print(genre)
     if reply in all_moods or reply == 'more':
         if reply != 'more':
             mood = reply
+            context.chat_data['selected_genre'] = mood
         print(reply)
         update.callback_query.answer()
+        genre = context.chat_data['selected_genre']
+        mood = context.chat_data['selected_mood']
         songs = read_songs(genre=genre, mood=mood, shown_songs=shown_songs)
         n_songs = len(songs)
         print(n_songs, " Songs")
