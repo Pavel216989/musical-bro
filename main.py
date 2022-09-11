@@ -41,7 +41,7 @@ def main_menu(update: Update, context: CallbackContext):
             mood = reply
         print(reply)
         update.callback_query.answer()
-        songs = read_songs(genre="test", mood=None, shown_songs=shown_songs)
+        songs = read_songs(genre=genre, mood=mood, shown_songs=shown_songs)
         n_songs = len(songs)
         print(n_songs, " Songs")
         if n_songs >= 5:

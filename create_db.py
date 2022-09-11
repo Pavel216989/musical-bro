@@ -61,7 +61,6 @@ def write_songs(ytmusic, songs: list[dict]):
         mood = song['Mood'].split(',')
         mood = [m.lower().strip() for m in mood]
         moods.append(mood)
-        print(f"Processed song: {song['Artist']} - {song['Title']}")
     songlink_urls = get_multiple_songlink_urls(urls=ytmusic_urls)
     new_df = pd.DataFrame.from_records(songlink_urls)
     new_df['artist'] = artists
