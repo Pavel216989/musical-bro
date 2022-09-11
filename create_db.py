@@ -8,34 +8,34 @@ from src.connection.rds import create_connection, create_db_engine
 
 FIRST_COLUMNS = ["artist", "title", "genre", "mood"]
 
-# def save_top_10_songs(ytmusic_client, artist: str):
-#     ytmusic_songs = get_artist_songs(
-#         youtube_music_client=ytmusic_client,
-#         artist_name=artist,
-#         n_songs=10
-#     )
-#     ytmusic_titles, ytmusic_urls = get_songs_titles_urls(ytmusic_songs)
-#     songlink_urls = get_multiple_songlink_urls(urls=ytmusic_urls)
-    # new_df = pd.DataFrame.from_records(songlink_urls)
-    # new_df['artist'] = artist
-    # new_df['title'] = ytmusic_titles
-    # new_df['genre'] = [["test", "test1"] for i in range(new_df.shape[0])]
-    # new_df['mood'] = [["sport", "cry"] for i in range(new_df.shape[0])]
-    # new_df = _sort_dataframe_columns(new_df)
-#     print('done')
-    # engine = create_db_engine()
-    # # connection = create_connection()
-    # new_df.to_sql(
-    #     name="songs",
-    #     con=engine,
-    #     schema="public",
-    #     if_exists="append",
-    #     index=False,
-    #     dtype={
-    #         "genre": postgresql.ARRAY(types.String),
-    #         "mood": postgresql.ARRAY(types.String)
-    #     }
-    # )
+def save_top_10_songs(ytmusic_client, artist: str):
+    ytmusic_songs = get_artist_songs(
+        youtube_music_client=ytmusic_client,
+        artist_name=artist,
+        n_songs=10
+    )
+    ytmusic_titles, ytmusic_urls = get_songs_titles_urls(ytmusic_songs)
+    songlink_urls = get_multiple_songlink_urls(urls=ytmusic_urls)
+    new_df = pd.DataFrame.from_records(songlink_urls)
+    new_df['artist'] = artist
+    new_df['title'] = ytmusic_titles
+    new_df['genre'] = [["test", "test1"] for i in range(new_df.shape[0])]
+    new_df['mood'] = [["sport", "cry"] for i in range(new_df.shape[0])]
+    new_df = _sort_dataframe_columns(new_df)
+    print('done')
+    engine = create_db_engine()
+    # connection = create_connection()
+    new_df.to_sql(
+        name="songs",
+        con=engine,
+        schema="public",
+        if_exists="append",
+        index=False,
+        dtype={
+            "genre": postgresql.ARRAY(types.String),
+            "mood": postgresql.ARRAY(types.String)
+        }
+    )
 
 def write_songs(ytmusic, songs: list[dict]):
     artists = []
