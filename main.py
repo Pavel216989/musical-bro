@@ -18,7 +18,7 @@ with open(TEMPLATE_PATH) as f:
     HTML_TEMPLATE = jinja2.Template(f.read())
 
 all_genres = ['Здзіві мяне!', "Фолк", 'Поп', 'Метал', 'Індзі', 'Рэп', 'Рок', 'Электроніка', 'Skip genre']
-all_moods = ['Імпрэза', 'Спорт', 'Рамантыка', 'Разбітае сэрцайка', 'Медытацыя','Чыл','У дарозе','Самота','Надзея','Праца\вучоба','Skip mood']
+all_moods = ['Імпрэза', 'Спорт', 'Рамантыка', 'Разбітае сэрцайка','Чыл','У дарозе','Самота','Надзея','Skip mood']
 goback = ["Назад"]
 
 
@@ -80,7 +80,7 @@ def error(update, context):
 
 ############################ Keyboards #########################################
 def main_menu_keyboard():
-    keyboard = [[InlineKeyboardButton('Здзіві мяне!', callback_data='pдзіві мяне!')],
+    keyboard = [[InlineKeyboardButton('Здзіві мяне!', callback_data='Здзіві мяне!')],
                 [InlineKeyboardButton('Фолк', callback_data='Фолк')],
                 [InlineKeyboardButton('Поп', callback_data='Поп')],
                 [InlineKeyboardButton('Метал', callback_data='Метал')],
@@ -104,12 +104,10 @@ def first_menu_keyboard():
                 [InlineKeyboardButton('Спорт', callback_data='Спорт')],
                 [InlineKeyboardButton('Рамантыка', callback_data='Рамантыка')],
                 [InlineKeyboardButton('Разбітае сэрцайка', callback_data='Разбітае сэрцайка')],
-                [InlineKeyboardButton('Медытацыя', callback_data='Медытацыя')],
                 [InlineKeyboardButton('Чыл', callback_data='Чыл')],
                 [InlineKeyboardButton('У дарозе', callback_data='У дарозе')],
                 [InlineKeyboardButton('Самота', callback_data='Самота')],
                 [InlineKeyboardButton('Надзея', callback_data='Надзея')],
-                [InlineKeyboardButton('Праца\вучоба', callback_data='Праца\вучоба')],
                 [InlineKeyboardButton('Прапусціць', callback_data='Skip mood')],
                 [InlineKeyboardButton('Назад', callback_data="Назад")]
     ]
